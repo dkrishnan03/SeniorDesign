@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run Scripts</title>
+</head>
+<body>
+    <h1>Let's operate your IdeaSmith</h1>
+
+    <button onclick="runScript('/zProbe')" style="position: absolute; top: 120px; left: 50px;">Z-Probe</button>
+    <button onclick="runScript('/draw')" style="position: absolute; top: 120px; left: 150px;">Draw</button>
+    <button onclick="runScript('/recenter')" style="position: absolute; top: 120px; left: 250px;">Recenter</button>
+    <button onclick="runScript('/up')" style="position: absolute; top: 175px; left: 150px;">Up</button>
+    <button onclick="runScript('/left')" style="position: absolute; top: 205px; left: 75px;">Left</button>
+    <button onclick="runScript('/right')" style="position: absolute; top: 205px; left: 225px;">Right</button>
+    <button onclick="runScript('/down')" style="position: absolute; top: 235px; left: 145px;">Down</button>
+
+
+    <p id="status"></p>
+
+    <script>
+        function runScript(endpoint) {
+            fetch(endpoint)
+                .then(response => response.json())
+                .then(data => document.getElementById('status').innerText = data.status)
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
